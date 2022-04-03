@@ -1,2 +1,3 @@
-inbox-updated/node_modules/
-inbox-updated/.DS_Store
+node_modules
+.DS_Store
+package-lock.json
