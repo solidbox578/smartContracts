@@ -31,7 +31,7 @@ contract Lottery{
     }
 
     // Only manager would be able to see the list of players enter into the lottery contest
-    function getPlayersList() public view managerRestricted returns(address[]){
+    function getPlayersList() public view managerRestricted returns(address[] memory){
       return players;
     }
 
