@@ -21,6 +21,6 @@ const input = {
     },
   },
 };
-
+//console.log(JSON.parse(solc.compile(JSON.stringify(input))));
 module.exports = JSON.parse(solc.compile(JSON.stringify(input)))
                       .contracts['Inbox.sol'].Inbox;
