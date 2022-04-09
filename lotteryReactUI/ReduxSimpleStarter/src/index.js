@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-
-
-const API_KEY = "AIzaSyBf-mBYkmKoyfGEBInvrtMxeZuMQBQGiho";
-
 import App from './components/app';
 import reducers from './reducers';
+
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
