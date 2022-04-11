@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 contract Lottery{
 
     address public manager;
-    address[] public players;
+    address payable[] public players;
 
     constructor() {
         manager = msg.sender;
@@ -13,7 +13,7 @@ contract Lottery{
     function enter() public payable {
         require(msg.value > 0.01 ether);
 
-        players.push(msg.sender);
+        players.push(payable(msg.sender));
     }
 
     function random() private view returns(uint){
@@ -25,13 +25,13 @@ contract Lottery{
     function pickWinner() public managerRestricted {
         uint index = random() % players.length;
         // casting players[index] to payable address
-        payable(players[index]).transfer(address(this).balance);
+        players[index].transfer(address(this).balance);
         // initialise palyers with empty address array with initial size of 0
-        players = new address[](0);
+        players = new address payable[](0);
     }
 
     // Only manager would be able to see the list of players enter into the lottery contest
-    function getPlayersList() public view managerRestricted returns(address[] memory){
+    function getPlayersList() public view managerRestricted returns(address payable[] memory){
       return players;
     }
 

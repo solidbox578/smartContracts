@@ -20,7 +20,12 @@ const deploy = async () =>{
               .deploy({data : evm.bytecode.object})
               .send({gas : '1000000', from : accounts[0]});
 
+  // console.log('ABI Interface', abi);//Not this one
+  var util = require('util');
+  console.log(util.inspect(abi,false,null,true));
+
   console.log('Contract deployed to address', result.options.address);
+
   provider.engine.stop();
 
 };
