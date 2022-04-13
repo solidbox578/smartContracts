@@ -5,6 +5,7 @@ contract Lottery{
 
     address public manager;
     address payable[] public players;
+    address public winner;
 
     constructor() {
         manager = msg.sender;
@@ -26,12 +27,12 @@ contract Lottery{
         uint index = random() % players.length;
         // casting players[index] to payable address
         players[index].transfer(address(this).balance);
+        winner = players[index];
         // initialise palyers with empty address array with initial size of 0
         players = new address payable[](0);
     }
 
-    // Only manager would be able to see the list of players enter into the lottery contest
-    function getPlayersList() public view managerRestricted returns(address payable[] memory){
+    function getPlayersList() public view returns(address payable[] memory){
       return players;
     }
 

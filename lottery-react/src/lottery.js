@@ -1,6 +1,6 @@
 import web3 from './web3';
 
-const address='0x4618792601990b6e5FA9E1A4ae4e61259A141DC3';
+const address='0xCc9347e6aE219609d06eb31244E782E3b3E6cafc';
 
 const abi =
 [
@@ -67,8 +67,17 @@ const abi =
     constant: true,
     payable: undefined,
     signature: '0xf71d96cb'
+  },
+  {
+    inputs: [],
+    name: 'winner',
+    outputs: [ { internalType: 'address', name: '', type: 'address' } ],
+    stateMutability: 'view',
+    type: 'function',
+    constant: true,
+    payable: undefined,
+    signature: '0xdfbf53ae'
   }
 ];
-
 
 export default new web3.eth.Contract(abi, address);
