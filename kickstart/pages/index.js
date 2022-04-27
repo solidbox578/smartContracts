@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-
+import Layout from '../components/layout';
 import factory from '../ethereum/factory';
 
 class CompaignIndex extends Component{
@@ -25,15 +25,16 @@ class CompaignIndex extends Component{
 
   render(){
     return (
-      <div>
+      <Layout>
         <h3> Open Comapigns </h3>
-        {this.renderCompaign()}
         <Button
+          floated="right"
           content= "Create Compaign"
           icon="add circle"
           primary
         />
-      </div>
+        {this.renderCompaign()}
+      </Layout>
     );
   }
 }
