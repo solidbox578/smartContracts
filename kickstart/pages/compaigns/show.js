@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import web3 from '../../ethereum/web3';
 import Layout from '../../components/Layout';
-import { Card, Grid } from 'semantic-ui-react';
+import { Card, Grid, Button } from 'semantic-ui-react';
 import Compaign from '../../ethereum/compaign';
 import ContributeForm from '../../components/ContributeForm';
+import {Link} from '../../routes';
 
 
 class showCompaign extends Component{
@@ -68,12 +69,23 @@ class showCompaign extends Component{
         <Layout>
         <h3>Compaign Show </h3>
         <Grid>
-          <Grid.Column width={10}>
-            {this.renderCard()}
-          </Grid.Column>
-          <Grid.Column width={6}>
-            <ContributeForm address={this.props.address} />
-          </Grid.Column>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              {this.renderCard()}
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <ContributeForm address={this.props.address} />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <Link route={`/compaigns/${this.props.address}/requests`}>
+              <a>
+                <Button primary>View Requests</Button>
+              </a>
+              </Link>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
         </Layout>
     );
