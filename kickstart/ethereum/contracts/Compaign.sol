@@ -82,4 +82,16 @@ contract Compaign{
         request.complete = true;
     }
 
+    function getSummary() public view returns(
+      uint, uint, uint, uint, address
+      ){
+      return (
+          minimumContribution,
+          address(this).balance,
+          approversCount,
+          numRequests,
+          manager
+        );
+    }
+
 }

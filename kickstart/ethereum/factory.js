@@ -3,7 +3,7 @@ import compaignFactory from './build/CompaignFactory.json';
 
 const instance = new web3.eth.Contract(
   compaignFactory.abi,
-  '0xd7bCeE0cECBC048CD9d02840a41da9baE0E7d7c6'
+  '0xE35b3598be724e538CE8FE4eA92410aecA16d4C3'
 );
 
 export default instance;
