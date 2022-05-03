@@ -82,6 +82,10 @@ contract Compaign{
         request.complete = true;
     }
 
+    function getRequestCount() public view returns(uint){
+      return numRequests;
+    }
+
     function getSummary() public view returns(
       uint, uint, uint, uint, address
       ){
