@@ -29,7 +29,7 @@ contract Compaign{
 
     mapping(uint => Request) public requests;
 
-    uint numRequests;
+    uint numRequests;  // Total created requests counter
     address public manager;
     uint public minimumContribution;
     mapping(address => bool) public approvers;
@@ -64,8 +64,8 @@ contract Compaign{
 
     function approveRequest(uint index) public {
         Request storage request = requests[index];
-        require(approvers[msg.sender]);
-        require(!request.approvals[msg.sender]);
+        require(approvers[msg.sender]);   //sender should be in the approvers list, those who have already contributed
+        require(!request.approvals[msg.sender]);  // sender should not be in the list of those who already approved
 
         request.approvals[msg.sender]=true;
         request.approvalsCount++;
@@ -75,8 +75,8 @@ contract Compaign{
     function finalizeRequest(uint index) public restricted {
         Request storage request = requests[index];
 
-        require(request.approvalsCount > (approversCount / 2));
-        require(!request.complete);
+        require(request.approvalsCount > (approversCount / 2));  // request approval count should be more than half of total approvers count
+        require(!request.complete);    // request should not be completed
 
         request.recipient.transfer(request.value);
         request.complete = true;

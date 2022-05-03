@@ -20,11 +20,11 @@ class RequestRow extends Component{
     try{
         const accounts = await web3.eth.getAccounts();
         await compaign.methods.approveRequest(this.props.id).send({ from: accounts[0] });
-        Router.pushRoute(`/compaigns/${this.props.address}/requests`);
       } catch(err){
         this.setState({errorMessageApprove: err.message});
       }
     this.setState({loadingApprove: false});
+    Router.pushRoute(`/compaigns/${this.props.address}/requests`);
   };
 
   onFinalize = async () => {
@@ -37,6 +37,7 @@ class RequestRow extends Component{
       this.setState({errorMessageFinalize: err.message});
     }
     this.setState({loadingFinalize: false});
+    Router.pushRoute(`/compaigns/${this.props.address}/requests`);
   };
 
   render(){

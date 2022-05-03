@@ -40,8 +40,8 @@ class showCompaign extends Component{
         style : { overflowWrap: 'break-word' }
       },
       {
-        header : minimumContribution,
-        meta : 'Minimum Contrinution (in Wei)',
+        header : minimumContribution + '/' + web3.utils.fromWei(minimumContribution,'ether'),
+        meta : 'Minimum Contrinution (in Wei/Ether)',
         description : 'Minimum Contrinution allowed'
       },
       {
